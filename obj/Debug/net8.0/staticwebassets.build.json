@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "P7fDt5edcmmsIQAJX6igjioEbcXfMM5R2Pu22G4dafc=",
+  "Source": "AspNetCoreWebApiErrorHandlingMiddleware",
+  "BasePath": "_content/AspNetCoreWebApiErrorHandlingMiddleware",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

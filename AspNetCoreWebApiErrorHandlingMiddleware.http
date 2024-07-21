@@ -1,0 +1,6 @@
+@AspNetCoreWebApiErrorHandlingMiddleware_HostAddress = http://localhost:5128
+
+GET {{AspNetCoreWebApiErrorHandlingMiddleware_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
