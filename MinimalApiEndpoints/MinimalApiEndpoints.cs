@@ -2,10 +2,18 @@ namespace AspNetCoreWebApiErrorHandlingMiddleware.MinimalApiEndpoints;
 
 public static class MinimalApiEndpoints
 {
-    public static void MapMinimalEndpoints(this IEndpointRouteBuilder app)
+    public static void MapMinimalEndpoints(this IEndpointRouteBuilder routes)
     {
-        app.MapGet("/minimal", () => {
-            throw new InvalidOperationException("minimal");
+        var minimalApiRoutesGroup = routes.MapGroup("/minimal");
+
+        minimalApiRoutesGroup.MapGet("", () =>
+        {
+            throw new NotImplementedException();
+        });
+
+        minimalApiRoutesGroup.MapGet("invalid", () =>
+        {
+            throw new InvalidOperationException();
         });
     }
 }

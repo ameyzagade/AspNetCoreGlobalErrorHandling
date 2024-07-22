@@ -42,6 +42,7 @@ public class NewGlobalExceptionHandler : IExceptionHandler
         httpContext.Response.ContentType = "application/json";
         await httpContext.Response.WriteAsJsonAsync(responseJson, cancellationToken: cancellationToken);
 
-        return false;
+        // returning true will end the middleware here.
+        return true;
     }
 }

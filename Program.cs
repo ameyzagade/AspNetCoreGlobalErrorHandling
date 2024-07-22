@@ -1,4 +1,8 @@
+using System.Net;
+using System.Text.Json;
 using AspNetCoreWebApiErrorHandlingMiddleware.Handlers;
+using AspNetCoreWebApiErrorHandlingMiddleware.MinimalApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,16 +20,17 @@ builder.Services.AddSwaggerGen();
 // For the new way of using global exception handler, 
 // register the interface implementation of IExceptionHandler with the DI container
 builder.Services.AddExceptionHandler<NewGlobalExceptionHandler>();
+
 // Exception handlers can be chained too, to allow different logic in exception handlers.
 // To pass control to the next exception handler, simply return false before generating response 
 // so that the next exception handler can take over
 // builder.Services.AddExceptionHandler<NewGlobalExceptionHandler2>();
-// Register problem details with the DI container as this is a dependency for the new global exception handler
+
+// Register problem details with the DI container as this will add a default problem details 
+// response for any unhandled exceptions
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
-
-//app.MinimalApiEndpoints();
 
 // For the old way of using global exception handler, 
 // configure the middleware pipeline to use the interface implementation of IMiddleware.
@@ -47,6 +52,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.MapMinimalEndpoints();
 
 app.MapControllers();
 

@@ -4,3 +4,8 @@ GET {{AspNetCoreWebApiErrorHandlingMiddleware_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{AspNetCoreWebApiErrorHandlingMiddleware_HostAddress}}/minimal
+
+
+###
+GET {{AspNetCoreWebApiErrorHandlingMiddleware_HostAddress}}/minimal/invalid
